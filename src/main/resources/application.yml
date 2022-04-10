@@ -1,0 +1,96 @@
+person:
+  userName: zhangsan  #单引号会将\n作为字符串 双引号会将\n作为换行输出
+  boss: false
+  birth: 2019/12/12 20:12:33
+  age: 18
+  pet:
+    name: tomcat
+    age: 23.4
+  interests: [篮球,游泳]
+  animal:
+    - jerry
+    - mario
+  score:
+    english:
+      first: 30
+      second: 40
+      third: 50
+    math: [131,140,148]
+    chinese: {first: 128,second: 136}
+  salarys: [3999,4999.98,5999.99]
+  allPets:
+    sick:
+      - {name: tom}
+      - {name: jerry,age: 47}
+    health: [{name: mario,age: 47}]
+
+
+
+spring:
+  mvc:
+    #    static-path-pattern:  /res/**  #静态资源默认地址
+    hiddenmethod:
+      filter:
+        enabled: true   #开启页面表单的Rest功能  默认是_method方法
+
+  #  web:
+  #    resources:     #将静态资源默认放在static文件夹中
+  #      static-locations: classpath:/static
+
+
+
+  #server:
+  #  servlet:
+  #    context-path: /world  相对路径自动添加
+  jdbc:
+    template:
+      query-timeout: 3  #查询时间 3 second
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # type: com.zaxxer.hikari.HikariDataSource
+    druid:
+      aop-patterns: com.hue.jdk.*  #springbean监控
+      filters: stat,wall,slf4j     #所有开启的功能
+
+      stat-view-servlet:  #监控页配置
+        enabled: true
+        login-username: admin
+        login-password: 123456   #druid登录
+        resetEnable: false
+
+      web-stat-filter:  #web监控
+        enabled: true
+        urlPattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+
+        filter:
+          stat: #sql监控
+            slow-sql-millis: 1000
+            logSlowSql: true
+            enabled: true
+
+          wall: #防火墙
+            enabled: true
+            config:
+              drop-table-allow: false   #不允许删除
+
+#              redis:
+#                host: r-bp1nc7reqesxisgxpipd.redis.rds.aliyuncs.com
+#                port: 6379
+#                password: lfy:Lfy123456
+#                client-type: jedis
+#                jedis:
+#                  pool:
+#                    max-active: 10
+
+
+mybatis:
+#  config-location: classpath:mybatis/mybatis-config.xml #全局配置文件位置
+#  mapper-locations: classpath:mybatis/mapper/*.xml #sql映射文件位置
+  configuration:
+    map-underscore-to-camel-case: true  # 驼峰命名规则
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link th:href="@{/js/advanced-datatable/css/demo_page.css}" rel="stylesheet"/>
+    <link th:href="@{/js/advanced-datatable/css/demo_table.css}" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/js/data-tables/DT_bootstrap.css}"/>
+
+    <div th:include="common :: commonheader"></div>
+</head>
+<body>
+
+<section>
+
+    <div th:replace="common :: #leftmenu"></div>
+    <!-- main content start-->
+    <div class="main-content">
+
+        <div th:replace="common :: headermenu"></div>
+    </div>
+</section>
+
+
+<div class="wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Dynamic Table
+                    <span class="tools pull-right">
+                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-times"></a>
+             </span>
+                </header>
+
+                <div class="panel-body">
+                    <form action="dynamic_table" method="get">
+                        <div class="adv-table">
+                            <table class="display table table-bordered table-striped" id="dynamic-table">
+                                <thead>
+                                <tr>
+                                    <td>id</td>
+                                    <td>name</td>
+                                    <td>age</td>
+                                    <td>email</td>
+                                    <td colspan="2">操作</td>
+                                </tr>
+                                </thead>
+                                <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                <tr>
+                                    <td><input name="id" th:text="${user.id}"/></td>
+                                    <td><input name="name" th:text="${user.name}"/></td>
+                                    <td><input name="age" th:text="${user.age}"/></td>
+                                    <td><input name="email" th:text="${user.email}"/></td>
+                                    <td><input type="submit" value="提交"/></td>
+                                </tr>
+                                </tfoot>
+                            </table>
+
+
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!--body wrapper end-->
+
+    <!--footer section start-->
+    <footer>
+        2020 &copy; AdminEx by ThemeBucket </a>
+    </footer>
+    <!--footer section end-->
+
+
+    <div th:replace="common :: #commonscript"></div>
+    <!--dynamic table-->
+    <script type="text/javascript" language="javascript" src="js/advanced-datatable/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="js/data-tables/DT_bootstrap.js"></script>
+</body>
+</html>
