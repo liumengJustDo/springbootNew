@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class Cat implements Animal {
+    private  String name;
 
     public void speak(int i) {
         System.out.println("发出第"+i+"种叫声");

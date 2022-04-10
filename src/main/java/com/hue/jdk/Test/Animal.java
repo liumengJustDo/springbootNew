@@ -8,5 +8,6 @@ package com.hue.jdk.Test;
  */
 public interface Animal {
 
+
     public void speak(int i);
 }
